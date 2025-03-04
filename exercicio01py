@@ -1,0 +1,33 @@
+def eh_primo(numero):    
+    if numero < 2:
+        return False
+    for i in range(2, int(numero ** 0.5) + 1):
+        if numero % i == 0:
+            return False
+    return True
+
+def gerar_primos(n):    
+    primos = []
+    numero = 2  # Primeiro número primo
+    while len(primos) < n:
+        if eh_primo(numero):
+            primos.append(numero)
+        numero += 1
+    return primos
+
+def main():    
+    while True:
+        try:
+            n = int(input("Digite um número inteiro positivo para gerar os primeiros primos: "))
+            if n > 0:
+                break
+            else:
+                print("Erro: Digite um número inteiro positivo maior que zero.")
+        except ValueError:
+            print("Erro: Digite um número inteiro válido.")
+
+    primos = gerar_primos(n)
+    print(f"Os {n} primeiros números primos são: {primos}")
+
+if __name__ == "__main__":
+    main()
